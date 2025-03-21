@@ -1,0 +1,96 @@
+Inference and Observations
+
+1. MSE Comparison:
+
+   Compare the MSE values printed for the three models. 
+   A lower MSE on the validation set suggests better generalization. 
+   Regularization (Lasso and Ridge) often improves validation performance by reducing overfitting.
+
+2. Feature Coefficients:
+
+   - OLS (Linear Regression):
+
+     All features have nonzero coefficients. 
+     Their magnitudes reflect the effect on the target, but large coefficients might indicate multicollinearity or overfitting.
+
+   - Lasso (L1):
+
+     Some coefficients may be reduced to zero, indicating that the corresponding features are not significant in predicting house prices. 
+     This leads to a more interpretable model.
+
+   - Ridge (L2):
+
+     Coefficients are generally shrunk (reduced in magnitude) compared to OLS, which can help mitigate overfitting and handle multicollinearity.
+
+3. Justification:
+
+   If Lasso drops one or more features (coefficients become exactly zero) without a significant increase in MSE, it suggests those features may be redundant or noisy.
+   Ridge’s shrinkage smooths out the coefficients and may yield a lower MSE if the model had high variance.
+   Ultimately, the choice between these methods depends on the trade-off between model interpretability (Lasso) and overall prediction accuracy (Ridge or a well-tuned OLS).
+
+
+RESULT
+
+Dataset Head:
+
+      crim    zn  indus  chas    nox     rm   age     dis  rad  tax  ptratio       b  lstat  medv
+0  0.00632  18.0   2.31     0  0.538  6.575  65.2  4.0900    1  296     15.3  396.90   4.98  24.0
+1  0.02731   0.0   7.07     0  0.469  6.421  78.9  4.9671    2  242     17.8  396.90   9.14  21.6
+2  0.02729   0.0   7.07     0  0.469  7.185  61.1  4.9671    2  242     17.8  392.83   4.03  34.7
+3  0.03237   0.0   2.18     0  0.458  6.998  45.8  6.0622    3  222     18.7  394.63   2.94  33.4
+4  0.06905   0.0   2.18     0  0.458  7.147  54.2  6.0622    3  222     18.7  396.90   5.33  36.2
+
+1. Linear Regression (OLS) Results:
+
+    MSE on validation set: 24.29
+
+    Feature: crim       Coefficient: -0.1131
+    Feature: zn         Coefficient: 0.0301
+    Feature: indus      Coefficient: 0.0404
+    Feature: chas       Coefficient: 2.7844
+    Feature: nox        Coefficient: -17.2026
+    Feature: rm         Coefficient: 4.4388
+    Feature: age        Coefficient: -0.0063
+    Feature: dis        Coefficient: -1.4479
+    Feature: rad        Coefficient: 0.2624
+    Feature: tax        Coefficient: -0.0106
+    Feature: ptratio    Coefficient: -0.9155
+    Feature: b          Coefficient: 0.0124
+    Feature: lstat      Coefficient: -0.5086
+
+2. Lasso Regression (L1) Results:
+
+    MSE on validation set: 25.16
+
+    Feature: crim       Coefficient: -0.1042
+    Feature: zn         Coefficient: 0.0349
+    Feature: indus      Coefficient: -0.0168
+    Feature: chas       Coefficient: 0.9200
+    Feature: nox        Coefficient: -0.0000
+    Feature: rm         Coefficient: 4.3117
+    Feature: age        Coefficient: -0.0151
+    Feature: dis        Coefficient: -1.1515
+    Feature: rad        Coefficient: 0.2392
+    Feature: tax        Coefficient: -0.0130
+    Feature: ptratio    Coefficient: -0.7322
+    Feature: b          Coefficient: 0.0131
+    Feature: lstat      Coefficient: -0.5647
+
+3. Ridge Regression (L2) Results:
+
+    MSE on validation set: 24.30
+
+    Feature: crim       Coefficient: -0.1124
+    Feature: zn         Coefficient: 0.0305
+    Feature: indus      Coefficient: 0.0349
+    Feature: chas       Coefficient: 2.7503
+    Feature: nox        Coefficient: -15.9245
+    Feature: rm         Coefficient: 4.4458
+    Feature: age        Coefficient: -0.0073
+    Feature: dis        Coefficient: -1.4296
+    Feature: rad        Coefficient: 0.2600
+    Feature: tax        Coefficient: -0.0108
+    Feature: ptratio    Coefficient: -0.9008
+    Feature: b          Coefficient: 0.0124
+    Feature: lstat      Coefficient: -0.5109
+

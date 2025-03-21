@@ -1,0 +1,23 @@
+Inference and Observations
+
+1. Loss Values:
+
+  - With the learning rate lowered to 0.01, you will observe that the loss decreases more gradually compared to a higher learning rate. 
+  - The curve is smoother, indicating more stable and smaller updates.
+
+2. Accuracy:
+
+  - Accuracy improves slowly over epochs because smaller updates take longer to push the model towards an optimal solution. 
+  - With only 10 epochs, the accuracy might not be as high as with a larger learning rate—but the training is typically more stable.
+
+3. Weight Updates:
+
+  - The average magnitude of weight updates is significantly lower, reflecting the smaller learning rate. 
+  - This results in a slower but more controlled convergence process.
+
+4. Overall Inference:
+
+  - A lower learning rate (0.01) tends to yield smoother convergence with smaller step sizes, reducing the risk of overshooting minima. 
+    However, this also means that the network may require more epochs to achieve comparable performance to a model trained with a higher learning rate.
+  - The loss curve plotted shows a steady but gradual decrease, while the printed accuracy values provide insight into the model's learning progress over the epochs.
+  - Such observations are crucial when tuning hyperparameters—the learning rate must strike a balance between convergence speed and stability.

@@ -1,0 +1,30 @@
+Inference and Observations
+
+1.BCE vs. MSE Loss Values:
+
+ - BCE Loss:
+
+   Typically, BCE loss decreases steadily as the network learns to predict probabilities closer to the true binary labels. 
+   Because BCE directly measures the difference in probability space (using logarithms), it gives a more interpretable loss value for classification.
+
+ - MSE Loss:
+
+   Although MSE loss also decreases, it is not as well tuned for classification tasks. 
+   Its decrease may be less steep because MSE treats the output as continuous values rather than probabilities.
+
+2.Accuracy:
+
+  The accuracy is computed by thresholding the sigmoid outputs (e.g., outputs ≥ 0.5 ≥ 0.5 are class 1).
+  Typically, a model trained with BCE loss will show slightly better or more stable accuracy improvements compared to one trained with MSE, 
+  because BCE provides better gradient signals for classification.
+
+3.Weight Updates:
+
+  While we do not print individual weight updates in this code snippet, 
+  the smaller gradients and more effective loss surface from BCE can lead to more efficient weight updates.
+
+4.Overall Justification:
+
+  Using BCE loss for binary classification is generally more appropriate because it directly penalizes misclassifications in a probabilistic sense.
+  The observed loss values and accuracy over epochs—if BCE loss is lower and accuracy higher—confirm that BCE provides a better optimization signal, 
+  compared to MSE in this setting.
